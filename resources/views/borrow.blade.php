@@ -1,43 +1,83 @@
 @extends('layouts.app')
 @section('title', 'ยืมหนังสือ')
 @section('content')
-    <h2 class="text text-center py-2">ยืมหนังสือ</h2>
-    {{-- <form method="POST" action="{{ route('borrow.store') }}"> --}}
+<div class="container">
+    <h2 class="text-center py-2">ยืมหนังสือ: {{ $book->title }}</h2>
+    <form method="POST" action="{{ route('storeBorrow') }}">
         @csrf
+        <input type="hidden" name="book_id" value="{{ $book->id }}">
+
         <div class="form-group">
-            <label for="book_id">เลือกหนังสือที่ต้องการยืม</label>
-            <select name="book_id" class="form-control">
-                {{-- @foreach($books as $book)
-                    <option value="{{ $book->id }}">{{ $book->title }}</option>
-                @endforeach --}}
-            </select>
+            <label for="first_name">ชื่อ</label>
+            <input type="text" name="first_name" class="form-control" required>
         </div>
-        @error('book_id')
+        @error('first_name')
             <div class="my-2">
-                <span class="text text-danger">#</span>
+                <span class="text-danger">{{ $message }}</span>
             </div>
         @enderror
 
         <div class="form-group">
-            <label for="borrow_date">วันที่ยืม</label>
-            <input type="date" name="borrow_date" class="form-control" value="{{ old('borrow_date') }}">
+            <label for="last_name">นามสกุล</label>
+            <input type="text" name="last_name" class="form-control" required>
+        </div>
+        @error('last_name')
+            <div class="my-2">
+                <span class="text-danger">{{ $message }}</span>
+            </div>
+        @enderror
+
+        <div class="form-group">
+            <label for="phone_number">เบอร์โทรศัพท์</label>
+            <input type="text" name="phone_number" class="form-control" required>
+        </div>
+        @error('phone_number')
+            <div class="my-2">
+                <span class="text-danger">{{ $message }}</span>
+            </div>
+        @enderror
+
+        <div class="form-group">
+            <label for="address">ที่อยู่</label>
+            <textarea name="address" class="form-control" required></textarea>
+        </div>
+        @error('address')
+            <div class="my-2">
+                <span class="text-danger">{{ $message }}</span>
+            </div>
+        @enderror
+
+        <div class="form-group">
+            <label for="borrow_date">วันที่ยืมหนังสือ</label>
+            <input type="date" name="borrow_date" class="form-control" required>
         </div>
         @error('borrow_date')
             <div class="my-2">
-                <span class="text text-danger">#</span>
+                <span class="text-danger">{{ $message }}</span>
             </div>
         @enderror
 
         <div class="form-group">
-            <label for="return_date">วันที่คืน</label>
-            <input type="date" name="return_date" class="form-control" value="{{ old('return_date') }}">
+            <label for="return_date">วันที่คืนหนังสือ</label>
+            <input type="date" name="return_date" class="form-control">
         </div>
         @error('return_date')
             <div class="my-2">
-                <span class="text text-danger">#</span>
+                <span class="text-danger">{{ $message }}</span>
             </div>
         @enderror
 
-        <input type="submit" value="ยืมหนังสือ" class="btn btn-primary my-3">
+        <div class="form-group">
+            <label for="note">หมายเหตุ</label>
+            <textarea name="note" class="form-control"></textarea>
+        </div>
+        @error('note')
+            <div class="my-2">
+                <span class="text-danger">{{ $message }}</span>
+            </div>
+        @enderror
+
+        <button type="submit" class="btn btn-primary my-3">ยืมหนังสือ</button>
     </form>
+</div>
 @endsection

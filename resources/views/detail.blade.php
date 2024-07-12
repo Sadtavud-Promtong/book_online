@@ -10,5 +10,5 @@
         <p>ประเภทหนังสือ {{ $book->category }}</p>
         <p>ราคาเช่า {{ $book->price }}</p>
         <hr>
-        <a href="/borrow" class="btn btn-success">ยืมหนังสือ</a>
+        <a href="/borrow/{{$item->id}}" class="btn btn-success">ยืมหนังสือ</a>
 @endsection

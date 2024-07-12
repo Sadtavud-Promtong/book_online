@@ -44,6 +44,16 @@
         @enderror
 
         <div class="form-group">
+            <label for="stock">จำนวนหนังสือ</label>
+            <input type="number" name="stock" class="form-control">
+        </div>
+        @error('price')
+            <div class="my-2">
+                <span class="text text-danger">{{$message}}</span>
+            </div>
+        @enderror
+
+        <div class="form-group">
             <label for="price">ราคาเช่าหนังสือหนังสือ</label>
             <input type="number" name="price" class="form-control">
         </div>

@@ -35,9 +35,20 @@
                 <option value="3"{{ $book->category == 'Entertainment' ? 'selected' : '' }}>Entertainment</option>
                 <option value="4"{{ $book->category == 'Comics' ? 'selected' : '' }}>Comics</option>
                 <option value="5"{{ $book->category == 'Educational' ? 'selected' : '' }}>Educational</option>
+                {{$book->category}}
             </select>
         </div>
         @error('category')
+            <div class="my-2">
+                <span class="text text-danger">{{$message}}</span>
+            </div>
+        @enderror
+
+        <div class="form-group">
+            <label for="stock">จำนวนหนังสือ</label>
+            <input type="number" name="stock" class="form-control"value="{{$book->stock}}">
+        </div>
+        @error('price')
             <div class="my-2">
                 <span class="text text-danger">{{$message}}</span>
             </div>
@@ -54,7 +65,7 @@
         @enderror
 
         <input type="submit" value="อัปเดต" class="btn btn-primary my-3">
-        <a href="book" class="btn btn-success">หนังสือทั้งหมด</a>
+        {{-- <a href="book" class="btn btn-success">หนังสือทั้งหมด</a> --}}
     </form>
 @endsection
  

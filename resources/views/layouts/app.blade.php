@@ -62,12 +62,21 @@
                               document.getElementById('logout-form').submit();">
                                         ออกจากระบบ
                                     </a>
+                                    <a class="dropdown-item" href="/history">
+                                        ประวัติการยืมหนังสือ
+                                    </a>
                                     @if (auth()->user()->is_admin == 1)
                                         <a class="dropdown-item" href="/create">
                                             เขียนหนังสือ
                                         </a>
                                         <a class="dropdown-item" href="/book">
                                             หนังสือทั้งหมด
+                                        </a>
+                                        <a class="dropdown-item" href="/pending">
+                                            รายการการยืมหนังสือที่รอการยืนยันหรือปฏิเสธ
+                                        </a>
+                                        <a class="dropdown-item" href="/return">
+                                            คำขอคืนหนังสือ
                                         </a>
                                     @endif
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
