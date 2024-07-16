@@ -30,7 +30,7 @@ Route::post('/borrow/{id}/approve', [AdminController::class, 'approve'])->name('
 Route::post('/borrow/{id}/reject', [AdminController::class, 'reject'])->name('reject');
 Route::get('/history', [AdminController::class, 'history'])->name('history');
 Route::post('/return-book/{id}', [AdminController::class, 'returnBook'])->name('returnBook');
-Route::get('/return', [AdminController::class, 'return'])->name('return');
+Route::get('/return', [AdminController::class, 'return'])->name('return')->middleware('is_admin');
 Route::post('/approve-return/{id}', [AdminController::class, 'approveReturn'])->name('approveReturn');
 
 

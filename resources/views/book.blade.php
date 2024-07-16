@@ -63,6 +63,8 @@
         <a href="/create" class="btn btn-success">เขียนหนังสือ</a>
         {{-- {{ $books->links() }} --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <script>
             $(document).ready(function() {
                 search();
@@ -133,7 +135,10 @@
             }
 
             function deletebook(bookid) {
-                if (confirm('คุณต้องการลบหนังสือหรือไม่?')) {
+                Swal.fire({
+                    title: "คุณต้องการลบหนังสือหรือไม่?"
+                }).then((result) => {
+                if (result.isConfirmed) {
                     $.ajax({
                         url: '{{ route('deletebook') }}',
                         type: 'GET',
@@ -142,13 +147,14 @@
                         },
                         success: function(response) {
                             search();
-                            alert('หนังสือถูกลบเรียบร้อยแล้ว');
+                            Swal.fire("หนังสือถูกลบแล้ว");
                         },
                         error: function(xhr, status, error) {
                             console.error(error);
                         }
                     });
                 }
+            });
             }
         </script>
     @endsection

@@ -16,6 +16,7 @@ class AdminController extends Controller
     function index(){
         $books=Book::join('type','type.id','=','books.category')
         ->select('books.*', 'type.type as category');
+        
 
             // ->paginate(8);
         
@@ -45,6 +46,11 @@ class AdminController extends Controller
         $book=DB::table('books')->where('id',$id)->first();
         return view('edit',compact('book'));
     }
+
+    // function edit($id){
+    //     DB::table('books')->where('id',$request->input('bookid'))->first();
+    //     return response()->json(200);
+    // }
 
     function insert(Request $request){
         $request->validate([
@@ -123,6 +129,7 @@ class AdminController extends Controller
             return $query->where('books.category', $category);
         })
         ->select('books.*', 'type.type as category')
+        // ->paginate(5)
         ->get();
         // dd($books);
 

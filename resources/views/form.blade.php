@@ -29,7 +29,7 @@
             <label for="category">ประเภทหนังสือหนังสือ</label>
             {{-- <input type="text" name="category" class="form-control"> --}}
             <select name="category" class="form-control">
-                <option value="#"></option>
+                <option value="">เลือกประเภทหนังสือ</option>
                 <option value="1">Travel</option>
                 <option value="2">Cooking</option>
                 <option value="3">Entertainment</option>
